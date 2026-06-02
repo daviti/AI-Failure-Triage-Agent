@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "quality-intelligence-agent"
+version = "0.1.0"
+description = "AI-powered CI failure triage, root cause analysis, and release risk intelligence"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.92.0",
+    "pydantic>=2.10",
+    "pydantic-settings>=2.7",
+    "typer>=0.15",
+    "rich>=13.9",
+    "httpx>=0.28",
+]
+
+[project.scripts]
+qia = "qia.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qia"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "ruff>=0.9",
+    "mypy>=1.14",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
