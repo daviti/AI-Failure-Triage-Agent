@@ -78,7 +78,7 @@ Confidence:   91%
 ╭─ Root Cause Analysis ──────────────────────────────────╮
 │ The failure originates at LoginActivity.kt:142 inside  │
 │ onResume(). The auth token accessor was changed in     │
-│ PR #480 to return null before the session is restored│
+│ PR #480 to return null before the session is restored|
 │ but the calling code in onResume() was not updated to  │
 │ guard against null. This is not a flaky failure —      │
 │ it reproduces 100% on fresh installs.                  │
