@@ -218,7 +218,7 @@ CI Log + Screenshot
   ┌──────────────────────────────────────────┐
   │          Triage Agent                    │
   │                                          │
-  │  • Claude Opus 4.8 (most capable model) │
+  │  • Claude Opus 4.8 (most capable model)  │
   │  • Adaptive thinking — Claude decides    │
   │    how deeply to reason per failure      │
   │  • Prompt caching — system prompt is     │
