@@ -1,9 +1,5 @@
 # Quality Intelligence Agent (QIA)
 
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Model: Claude Opus 4.8](https://img.shields.io/badge/model-Claude%20Opus%204.8-purple.svg)](https://www.anthropic.com/)
-
 > AI-powered CI failure triage, root cause analysis, and release risk intelligence — built with Claude Opus 4.8.
 
 ---
@@ -82,7 +78,7 @@ Confidence:   91%
 ╭─ Root Cause Analysis ──────────────────────────────────╮
 │ The failure originates at LoginActivity.kt:142 inside  │
 │ onResume(). The auth token accessor was changed in     │
-│ PR #480 to return null before the session is restored, │
+│ PR #480 to return null before the session is restored│
 │ but the calling code in onResume() was not updated to  │
 │ guard against null. This is not a flaky failure —      │
 │ it reproduces 100% on fresh installs.                  │
@@ -95,11 +91,11 @@ Confidence:   91%
  Suggested Actions
  # │ Action                  │ Description
 ───┼─────────────────────────┼──────────────────────────────────────────
- 1 │ Add null guard           │ Add `?: return` before the token access
+ 1 │ Add null guard          │ Add `?: return` before the token access
    │                         │ in onResume() at line 142
- 2 │ Add unit test            │ Cover the null-token case in
+ 2 │ Add unit test           │ Cover the null-token case in
    │                         │ LoginActivityTest
- 3 │ Review PR #480 changes   │ Audit all callers of the new auth
+ 3 │ Review PR #480 changes│ Audit all callers of the new auth
    │                         │ token accessor for similar gaps
 
 Similar Failure Patterns:
@@ -342,7 +338,4 @@ The kind of internal tooling that saves engineering teams hours every week and d
 
 ## License
 
-This project is licensed under the **MIT License** — free to use, modify, and distribute with attribution.
-See the [LICENSE](LICENSE) file for the full text.
-
-&copy; 2026 David Ortiz
+MIT
