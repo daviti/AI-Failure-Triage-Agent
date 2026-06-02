@@ -1,5 +1,9 @@
 # Quality Intelligence Agent (QIA)
 
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Model: Claude Opus 4.8](https://img.shields.io/badge/model-Claude%20Opus%204.8-purple.svg)](https://www.anthropic.com/)
+
 > AI-powered CI failure triage, root cause analysis, and release risk intelligence — built with Claude Opus 4.8.
 
 ---
@@ -338,4 +342,7 @@ The kind of internal tooling that saves engineering teams hours every week and d
 
 ## License
 
-MIT
+This project is licensed under the **MIT License** — free to use, modify, and distribute with attribution.
+See the [LICENSE](LICENSE) file for the full text.
+
+&copy; 2026 David Ortiz
