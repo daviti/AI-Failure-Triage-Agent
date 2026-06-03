@@ -20,6 +20,13 @@ class FailureCategory(str, Enum):
     unknown = "unknown"
 
 
+class ReleaseRisk(str, Enum):
+    blocker = "blocker"
+    high = "high"
+    medium = "medium"
+    low = "low"
+
+
 class SuggestedAction(BaseModel):
     title: str
     description: str
@@ -42,7 +49,7 @@ class TriageReport(BaseModel):
     similar_failure_patterns: list[str] = Field(
         description="Known patterns this failure resembles"
     )
-    release_risk: str = Field(
-        description="Assessment of risk to shipping if this is not fixed: low/medium/high/blocker"
+    release_risk: ReleaseRisk = Field(
+        description="Assessment of risk to shipping if this is not fixed"
     )
     confidence: float = Field(ge=0.0, le=1.0, description="Confidence score for this analysis")

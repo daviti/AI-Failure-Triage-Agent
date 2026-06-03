@@ -11,7 +11,16 @@ import anthropic
 from qia.config import settings
 from qia.models.triage import TriageReport
 
-_client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
+# Lazy-initialized so importing this module without ANTHROPIC_API_KEY set doesn't crash.
+_client: anthropic.Anthropic | None = None
+
+
+def _get_client() -> anthropic.Anthropic:
+    global _client
+    if _client is None:
+        _client = anthropic.Anthropic(api_key=settings.anthropic_api_key)
+    return _client
+
 
 _SYSTEM_PROMPT = """You are the Quality Intelligence Agent (QIA) — an expert in software quality
 engineering, CI/CD systems, and automated test infrastructure.
@@ -32,7 +41,13 @@ and log lines that support your conclusions. If you see a flaky pattern, say so 
 def _encode_image(path: Path) -> tuple[str, str]:
     """Return (base64_data, media_type) for an image file."""
     suffix = path.suffix.lower()
-    media_map = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".gif": "image/gif", ".webp": "image/webp"}
+    media_map = {
+        ".png": "image/png",
+        ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg",
+        ".gif": "image/gif",
+        ".webp": "image/webp",
+    }
     media_type = media_map.get(suffix, "image/png")
     data = base64.standard_b64encode(path.read_bytes()).decode()
     return data, media_type
@@ -75,19 +90,17 @@ def analyze(
             {"type": "text", "text": "The screenshot above was captured at the moment of failure."}
         )
 
-    response = _client.messages.parse(
+    # messages.parse() drives structured output via output_format=PydanticModel.
+    # output_config carries effort only — passing format here too would conflict.
+    response = _get_client().messages.parse(
         model=settings.model,
         max_tokens=settings.max_tokens,
         thinking={"type": "adaptive"},
-        output_config={
-            "effort": settings.effort,
-            "format": TriageReport.model_json_schema(),
-        },
+        output_config={"effort": settings.effort},
         system=[
             {
                 "type": "text",
                 "text": _SYSTEM_PROMPT,
-                # Cache the system prompt — it never changes between calls
                 "cache_control": {"type": "ephemeral"},
             }
         ],

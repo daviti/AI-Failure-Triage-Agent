@@ -144,8 +144,8 @@ QIA combines the log analysis with visual inspection of the screenshot — usefu
 
 ```bash
 # 1. Clone
-git clone https://github.com/YOUR_USERNAME/quality-intelligence-agent.git
-cd quality-intelligence-agent
+git clone https://github.com/daviti/AI-Failure-Triage-Agent.git
+cd AI-Failure-Triage-Agent
 
 # 2. Set up environment
 cp .env.example .env
@@ -324,7 +324,7 @@ quality-intelligence-agent/
 
 ---
 
-## What Problem This Solves (for hiring managers)
+## What Problem This Solves 
 
 This project demonstrates the ability to build **AI-assisted quality engineering systems** — the intersection of:
 
@@ -336,6 +336,5 @@ The kind of internal tooling that saves engineering teams hours every week and d
 
 ---
 
-## License
-
-MIT
+*Built by David Ortiz — SR QA Automation Engineer*  
+*Disciplines: test architecture · AI integration · CI/CD · release intelligence*
