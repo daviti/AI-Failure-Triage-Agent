@@ -1,5 +1,9 @@
 # Quality Intelligence Agent (QIA)
 
+[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Model: Claude Opus 4.8](https://img.shields.io/badge/model-Claude%20Opus%204.8-purple.svg)](https://www.anthropic.com/)
+
 > AI-powered CI failure triage, root cause analysis, and release risk intelligence — built with Claude Opus 4.8.
 
 ---
@@ -78,7 +82,7 @@ Confidence:   91%
 ╭─ Root Cause Analysis ──────────────────────────────────╮
 │ The failure originates at LoginActivity.kt:142 inside  │
 │ onResume(). The auth token accessor was changed in     │
-│ PR #480 to return null before the session is restored  |
+│ PR #480 to return null before the session is restored, │
 │ but the calling code in onResume() was not updated to  │
 │ guard against null. This is not a flaky failure —      │
 │ it reproduces 100% on fresh installs.                  │
@@ -189,11 +193,11 @@ cat artifacts/job.log | uv run qia triage --test "SmokeTest"
 
 ```bash
 uv run qia triage \
-  --log      ci.log           \   # path to log file
-  --test     "LoginFlowTest"  \   # test or job name
-  --screenshot failure.png    \   # screenshot at time of failure (optional)
-  --context  "PR #482, branch: auth-refactor" \  # extra context
-  --json                          # output JSON instead of formatted report
+  --log         ci.log \
+  --test        "LoginFlowTest" \
+  --screenshot  failure.png \
+  --context     "PR #482, branch: auth-refactor" \
+  --json
 ```
 
 ### All flags
@@ -293,7 +297,7 @@ Every `TriageReport` gives you data you can track over time:
 ## Project Structure
 
 ```
-quality-intelligence-agent/
+AI-Failure-Triage-Agent/
 ├── src/qia/
 │   ├── agents/
 │   │   └── triage_agent.py      # Claude Opus 4.8 + caching + structured output
@@ -324,17 +328,8 @@ quality-intelligence-agent/
 
 ---
 
-## What Problem This Solves 
+## License
 
-This project demonstrates the ability to build **AI-assisted quality engineering systems** — the intersection of:
+Licensed under the [MIT License](LICENSE) — free to use, modify, and distribute with attribution.
 
-- Deep QA/SDET domain knowledge (CI pipelines, failure patterns, automation frameworks)
-- Applied AI engineering (prompt design, structured outputs, vision, caching strategy)
-- Production-quality Python (typed, validated, testable, extensible)
-
-The kind of internal tooling that saves engineering teams hours every week and doesn't exist off the shelf.
-
----
-
-*Built by David Ortiz — SR QA Automation Engineer*  
-*Disciplines: test architecture · AI integration · CI/CD · release intelligence*
+&copy; 2026 David Ortiz
