@@ -328,6 +328,17 @@ AI-Failure-Triage-Agent/
 
 ---
 
+## Author
+
+**David Ortiz** — Senior QA Automation Engineer
+
+Disciplines: test architecture · AI integration · CI/CD · release intelligence
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?logo=linkedin)](https://www.linkedin.com/in/davidortiz)
+[![GitHub](https://img.shields.io/badge/GitHub-daviti-black?logo=github)](https://github.com/daviti)
+
+---
+
 ## License
 
 Licensed under the [MIT License](LICENSE) — free to use, modify, and distribute with attribution.
