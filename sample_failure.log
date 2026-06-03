@@ -1,0 +1,15 @@
+2026-06-03 10:14:22.341 [INFO]  Starting test run: CheckoutFlowTest
+2026-06-03 10:14:23.102 [INFO]  Launching app on emulator: Pixel_6_API_33
+2026-06-03 10:14:27.884 [INFO]  App launched successfully
+2026-06-03 10:14:28.001 [INFO]  Navigating to cart screen
+2026-06-03 10:14:29.442 [INFO]  Tapping checkout button
+2026-06-03 10:14:29.889 [ERROR] org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"id","selector":"com.example.shop:id/btn_place_order"}
+  (Session info: chrome=114.0.5735.90)
+    at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:342)
+    at com.example.tests.CheckoutFlowTest.testPlaceOrder(CheckoutFlowTest.java:87)
+    at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+    at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+2026-06-03 10:14:29.901 [ERROR] Test FAILED: testPlaceOrder
+2026-06-03 10:14:29.905 [INFO]  Screenshot saved: /artifacts/screenshots/testPlaceOrder_failed.png
+2026-06-03 10:14:29.910 [INFO]  --- Test Results ---
+2026-06-03 10:14:29.910 [INFO]  Tests run: 1, Failures: 1, Errors: 0
